@@ -57,16 +57,11 @@ import {
   tokenLimit,
 } from '@qwen-code/qwen-code-core/src/core/tokenLimits.js';
 import { useImagePaste, type WebViewImageMessage } from './hooks/useImage.js';
-
-const SKILL_ITEM_ID_PREFIX = 'skill:';
-
-function isSkillsSecondaryQuery(query: string): boolean {
-  return /^skills\s+/i.test(query);
-}
-
-function shouldOpenSkillsSecondaryPicker(item: CompletionItem): boolean {
-  return item.type === 'command' && item.id === 'skills';
-}
+import {
+  SKILL_ITEM_ID_PREFIX,
+  isSkillsSecondaryQuery,
+  shouldOpenSkillsSecondaryPicker,
+} from './utils/completionUtils.js';
 
 export const App: React.FC = () => {
   const vscode = useVSCode();
